@@ -78,7 +78,7 @@ def generar_cotizacion():
                     'cant': cant,
                     'descripcion': desc,
                     'preciounit': "",
-                    'preciototal": ""
+                    'preciototal': ""
                 })
 
         subtotal = precio_total
