@@ -124,7 +124,7 @@ const a = document.createElement('a');
 a.href = url;
 
 // Usar nombre dinámico para el ZIP
-a.download = `Multiservicios${ultimos3}.zip`;
+a.download = `Multiservicios${ultimos3}.docx`;
 
 document.body.appendChild(a);
 a.click();

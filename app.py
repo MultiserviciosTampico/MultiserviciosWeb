@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# Carpeta de descarga temporal dentro del proyecto
+# Carpeta temporal para descargas
 TEMP_DIR = os.path.join(os.path.dirname(__file__), "temp_download")
 os.makedirs(TEMP_DIR, exist_ok=True)
 
@@ -69,7 +69,7 @@ def generar_cotizacion():
         total = subtotal + iva
 
         # -----------------------------
-        # Generar Word en carpeta temporal
+        # Generar Word
         # -----------------------------
         ultimos3 = cotizacion[-3:]
         ultimos3 = str(int(ultimos3)) if ultimos3.isdigit() else '000'
@@ -99,7 +99,6 @@ def generar_cotizacion():
 
     except Exception as e:
         return f"Error: {e}", 500
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
