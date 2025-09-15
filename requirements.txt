@@ -1,5 +1,4 @@
-flask
+Flask
 docxtpl
 fpdf
-docx2pdf
-python-docx
+
