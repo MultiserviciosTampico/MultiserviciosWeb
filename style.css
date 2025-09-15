@@ -1,0 +1,137 @@
+/* General */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f6f8;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px; /* Centrado y tamaño máximo en PC */
+}
+
+.logo {
+    height: 80px;       /* controla la altura del logo */
+    width: auto;        /* mantiene la proporción de la imagen */
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.product-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+
+/* Header */
+.topbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-placeholder {
+  background: #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #030E44;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #0056d6;
+  margin-bottom: 15px;
+}
+
+/* Formularios en columna */
+.form-grid input,
+.form-grid textarea,
+.product-row input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* Productos */
+.product-row {
+  display: flex;
+  flex-direction: column; /* Fuerza modo móvil siempre */
+}
+
+.add-btn,
+.generate-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background: #e9f0ff;
+  color: #0056d6;
+}
+
+.generate-btn {
+  background: #0056d6;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Resumen */
+.summary {
+  margin-top: 20px;
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.summary .total {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+
