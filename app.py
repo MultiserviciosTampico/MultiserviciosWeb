@@ -1,7 +1,6 @@
 from flask import Flask, request, send_file, send_from_directory
 from docxtpl import DocxTemplate
 from fpdf import FPDF
-from docx2pdf import convert
 import os
 import zipfile
 
@@ -22,6 +21,45 @@ def home():
 @app.route('/<path:filename>')
 def static_files(filename):
     return send_from_directory('.', filename)
+
+
+# -----------------------------
+# Función para generar PDF con FPDF
+# -----------------------------
+def generar_pdf(pdf_path, datos):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+
+    pdf.cell(0, 10, f"Cotización: {datos['cotizacion']}", ln=True)
+    pdf.cell(0, 10, f"Fecha: {datos['fecha']}", ln=True)
+    pdf.cell(0, 10, f"Cliente: {datos['cliente']}", ln=True)
+    pdf.cell(0, 10, f"Dirección: {datos['direccion']}", ln=True)
+    pdf.cell(0, 10, f"Correo: {datos['correo']}", ln=True)
+    pdf.cell(0, 10, f"Teléfono: {datos['telefono']}", ln=True)
+    pdf.cell(0, 10, "------------------------------------------", ln=True)
+
+    # Tabla de productos
+    pdf.cell(40, 10, "Cantidad", border=1)
+    pdf.cell(80, 10, "Descripción", border=1)
+    pdf.cell(35, 10, "Precio Unitario", border=1)
+    pdf.cell(35, 10, "Precio Total", border=1)
+    pdf.ln()
+
+    for item in datos['tabla']:
+        pdf.cell(40, 10, str(item['cant']), border=1)
+        pdf.cell(80, 10, item['descripcion'], border=1)
+        pdf.cell(35, 10, item['preciounit'], border=1)
+        pdf.cell(35, 10, item['preciototal'], border=1)
+        pdf.ln()
+
+    pdf.cell(0, 10, "------------------------------------------", ln=True)
+    pdf.cell(0, 10, f"Subtotal: {datos['subtotal']}", ln=True)
+    pdf.cell(0, 10, f"IVA: {datos['iva']}", ln=True)
+    pdf.cell(0, 10, f"Total: {datos['total']}", ln=True)
+    pdf.cell(0, 10, f"Términos: {datos['terminos']}", ln=True)
+
+    pdf.output(pdf_path)
 
 
 # -----------------------------
@@ -80,9 +118,6 @@ def generar_cotizacion():
         ultimos3 = str(int(ultimos3)) if ultimos3.isdigit() else '000'
         base_name = f"Multiservicios{ultimos3}"
 
-        # Usamos TEMP_DIR para evitar errores de permiso
-        # No usamos TemporaryDirectory para que no se borre antes de tiempo
-        # Esto evita WinError 32
         # Generar Word
         plantilla_path = os.path.join(os.path.dirname(__file__), "Plantilla_nueva.docx")
         doc = DocxTemplate(plantilla_path)
@@ -103,9 +138,9 @@ def generar_cotizacion():
         word_path = os.path.join(TEMP_DIR, f"{base_name}.docx")
         doc.save(word_path)
 
-        # Generar PDF desde el Word
+        # Generar PDF con FPDF
         pdf_path = os.path.join(TEMP_DIR, f"{base_name}.pdf")
-        convert(word_path, pdf_path)
+        generar_pdf(pdf_path, context)
 
         # Crear ZIP con ambos archivos
         zip_path = os.path.join(TEMP_DIR, f"{base_name}.zip")
@@ -121,4 +156,7 @@ def generar_cotizacion():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=10000)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(debug=True, host="0.0.0.0", port=port)
+
