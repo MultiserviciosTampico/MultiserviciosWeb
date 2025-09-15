@@ -1,9 +1,6 @@
 from flask import Flask, request, send_file, send_from_directory
 from docxtpl import DocxTemplate
-from fpdf import FPDF
 import os
-import zipfile
-import subprocess
 
 app = Flask(__name__)
 
@@ -12,29 +9,15 @@ TEMP_DIR = os.path.join(os.path.dirname(__file__), "temp_download")
 os.makedirs(TEMP_DIR, exist_ok=True)
 
 # -----------------------------
-# Función para convertir Word a PDF usando LibreOffice
-# -----------------------------
-def convertir_a_pdf(word_path, pdf_path):
-    subprocess.run([
-        "libreoffice",
-        "--headless",
-        "--convert-to", "pdf",
-        "--outdir", os.path.dirname(pdf_path),
-        word_path
-    ], check=True)
-
-# -----------------------------
 # Servir index.html y archivos estáticos
 # -----------------------------
 @app.route('/')
 def home():
     return send_from_directory('.', 'index.html')
 
-
 @app.route('/<path:filename>')
 def static_files(filename):
     return send_from_directory('.', filename)
-
 
 # -----------------------------
 # Endpoint para generar la cotización
@@ -86,7 +69,7 @@ def generar_cotizacion():
         total = subtotal + iva
 
         # -----------------------------
-        # Generar Word + PDF + ZIP en carpeta temporal
+        # Generar Word en carpeta temporal
         # -----------------------------
         ultimos3 = cotizacion[-3:]
         ultimos3 = str(int(ultimos3)) if ultimos3.isdigit() else '000'
@@ -111,18 +94,8 @@ def generar_cotizacion():
         word_path = os.path.join(TEMP_DIR, f"{base_name}.docx")
         doc.save(word_path)
 
-        # Generar PDF usando LibreOffice
-        pdf_path = os.path.join(TEMP_DIR, f"{base_name}.pdf")
-        convertir_a_pdf(word_path, pdf_path)
-
-        # Crear ZIP con ambos archivos
-        zip_path = os.path.join(TEMP_DIR, f"{base_name}.zip")
-        with zipfile.ZipFile(zip_path, "w") as zipf:
-            zipf.write(word_path, arcname=f"{base_name}.docx")
-            zipf.write(pdf_path, arcname=f"{base_name}.pdf")
-
-        # Enviar ZIP al cliente
-        return send_file(zip_path, as_attachment=True)
+        # Enviar Word al cliente
+        return send_file(word_path, as_attachment=True)
 
     except Exception as e:
         return f"Error: {e}", 500
