@@ -1,0 +1,223 @@
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f6f8;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px; /* mismo estilo que su cotizador */
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+/* Header */
+.topbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #030E44;
+  line-height: 1.2;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #0056d6;
+  margin-bottom: 15px;
+}
+
+.card p {
+  margin: 12px 0 10px;
+  font-size: 14px;
+  color: #222;
+}
+
+/* Formularios */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid input,
+.product-row input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* Labels de check y radio */
+.form-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-grid input[type="checkbox"],
+.form-grid input[type="radio"] {
+  width: auto;
+  margin: 0;
+  accent-color: #0056d6;
+}
+
+/* Productos / conceptos */
+.products {
+  margin-top: 10px;
+}
+
+.product-row {
+  display: flex;
+  flex-direction: column; /* móvil siempre, como su estilo */
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.product-row input {
+  margin-bottom: 0;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Botones */
+.add-btn,
+.generate-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.add-btn {
+  background: #e9f0ff;
+  color: #0056d6;
+}
+
+.generate-btn {
+  background: #0056d6;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Checkbox de IVA */
+.card label {
+  font-size: 14px;
+  color: #333;
+}
+
+.card input[type="checkbox"],
+.card input[type="radio"] {
+  accent-color: #0056d6;
+}
+
+/* Resumen */
+.summary {
+  margin-top: 20px;
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.summary .total {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #030E44;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+/* Inputs focus */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0056d6;
+  box-shadow: 0 0 0 3px rgba(0, 86, 214, 0.08);
+}
+
+/* Placeholder */
+::placeholder {
+  color: #999;
+}
+
+/* Ajuste visual para radios / checks en secciones */
+.form-grid label input {
+  flex-shrink: 0;
+}
+
+/* Responsive ligero */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .company-name {
+    font-size: 1.3rem;
+  }
+
+  .logo {
+    height: 70px;
+  }
+}
