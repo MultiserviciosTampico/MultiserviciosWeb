@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orden de Trabajo - Multiservicios Tampico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CESESE.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="topbar">
+      <img src="LogoMultiservicios.png" alt="Logo de Multiservicios Tampico" class="logo">
+      <div class="company-name">Multiservicios Tampico</div>
+    </div>
+
+    <!-- DATOS GENERALES -->
+    <div class="card">
+      <h2>Orden de Trabajo</h2>
+      <div class="form-grid">
+        <input type="date" id="fecha">
+        <input type="text" id="folio" placeholder="Folio">
+      </div>
+    </div>
+
+    <!-- DATOS DEL CLIENTE -->
+    <div class="card">
+      <h2>Datos del Cliente</h2>
+      <div class="form-grid">
+        <input type="text" id="cliente" placeholder="Empresa / Cliente">
+        <input type="text" id="direccion" placeholder="Dirección">
+        <input type="email" id="correo" placeholder="Correo">
+        <input type="tel" id="telefono" placeholder="Teléfono">
+      </div>
+    </div>
+
+    <!-- DIAGNOSTICO TECNICO -->
+    <div class="card">
+      <h2>Diagnóstico Técnico</h2>
+      <textarea id="diagnostico" rows="4" placeholder="Describe el diagnóstico técnico"></textarea>
+    </div>
+
+    <!-- DATOS DEL SERVICIO -->
+    <div class="card">
+      <h2>Datos del Servicio</h2>
+
+      <p><strong>Tipo de Servicio</strong></p>
+      <div class="form-grid">
+        <label><input type="radio" name="tipo-servicio"> Mantenimiento Preventivo</label>
+        <label><input type="radio" name="tipo-servicio"> Mantenimiento Correctivo</label>
+        <label><input type="radio" name="tipo-servicio"> Instalación</label>
+        <label><input type="radio" name="tipo-servicio"> Reparación</label>
+        <label><input type="radio" name="tipo-servicio"> Otro</label>
+        <input type="text" id="otro-servicio" placeholder="Especificar otro servicio">
+      </div>
+
+      <p><strong>Área</strong></p>
+      <div class="form-grid">
+        <label><input type="checkbox" name="area"> Impermeabilización</label>
+        <label><input type="checkbox" name="area"> Plomería</label>
+        <label><input type="checkbox" name="area"> Electricidad</label>
+        <label><input type="checkbox" name="area"> Pintura</label>
+        <label><input type="checkbox" name="area"> Albañilería</label>
+        <label><input type="checkbox" name="area"> Soldadura</label>
+      </div>
+    </div>
+
+    <!-- CONCEPTOS -->
+    <div class="card">
+      <h2>Conceptos / Servicios</h2>
+
+      <div class="products">
+        <div class="product-row">
+          <input type="text" placeholder="No.">
+          <input type="text" placeholder="Descripción">
+          <input type="text" placeholder="P. Unit.">
+          <input type="text" placeholder="Total">
+        </div>
+      </div>
+
+      <button class="add-btn">➕ Agregar Concepto</button>
+
+      <div style="margin-top: 20px;">
+        <label>
+          <input type="checkbox" id="toggle-iva">
+          Aplicar IVA
+        </label>
+      </div>
+
+      <div class="summary">
+        <div><span>Total Parcial</span><span>$0.00</span></div>
+        <div><span>Impuestos (IVA)</span><span>$0.00</span></div>
+        <div><span>Otros</span><span>$0.00</span></div>
+        <div class="total"><span>Total</span><span>$0.00</span></div>
+      </div>
+    </div>
+
+    <!-- TERMINOS -->
+    <div class="card">
+      <h2>Términos y Condiciones / Garantía</h2>
+      <textarea rows="4" placeholder="Escribe aquí los términos y condiciones"></textarea>
+    </div>
+
+    <!-- FORMA DE PAGO -->
+    <div class="card">
+      <h2>Forma de Pago</h2>
+      <div class="form-grid">
+        <label><input type="radio" name="pago"> Efectivo</label>
+        <label><input type="radio" name="pago"> Transferencia</label>
+      </div>
+    </div>
+
+    <!-- BOTON -->
+    <div class="card">
+      <button class="generate-btn">Generar Orden de Trabajo</button>
+    </div>
+
+  </div>
+
+  <script src="orden_trabajo.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador - Multiservicios Tampico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- HEADER -->
+    <div class="topbar">
+      <img src="LogoMultiservicios.png" alt="Logo de Multiservicios Tampico" class="logo">
+      <div class="company-name">Multiservicios Tampico</div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="card">
+      <h2>Datos del Cliente</h2>
+      <div class="form-grid">
+        <input type="text" placeholder="Fecha">
+        <input type="text" placeholder="No. Cotización">
+        <input type="text" placeholder="Nombre del Cliente">
+        <input type="text" placeholder="Dirección">
+        <input type="text" placeholder="Correo">
+        <input type="text" placeholder="Teléfono">
+      </div>
+      <textarea rows="3" placeholder="Términos y Condiciones"></textarea>
+    </div>
+
+    <!-- PRODUCTOS CARD -->
+    <div class="card">
+      <h2>Productos / Servicios</h2>
+      <div class="products">
+        <div class="product-row">
+          <input type="text" placeholder="Numero">
+          <input type="text" placeholder="Descripción">
+          <input type="text" placeholder="Precio">
+        </div>
+      </div>
+      <button class="add-btn">➕ Agregar Producto</button>
+
+      <!-- NUEVO RECUADRO DE IVA -->
+      <div class="iva-toggle">
+        <label>
+          <input type="checkbox" id="toggle-iva">
+          Aplicar IVA
+        </label>
+      </div>
+
+      <div class="summary">
+        <div><span>Subtotal</span><span>$0.00</span></div>
+        <div><span>IVA</span><span>$0.00</span></div>
+        <div class="total"><span>Total</span><span>$0.00</span></div>
+      </div>
+
+      <button class="generate-btn">Generar Cotización</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
